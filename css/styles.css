@@ -1,0 +1,809 @@
+@font-face {
+	font-family: 'Manrope';
+	src: url(fonts/Manrope-VariableFont_wght.ttf);
+	font-style: normal;
+	font-weight: normal;
+}
+
+body {
+	font-family: 'Manrope', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#titleBlock h2 {
+	margin: 30px 50px;
+	font-size: 46px;
+	font-weight: 600;
+	line-height: 59.8px;
+	text-transform: uppercase;
+}
+
+#reviewsInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+#ratingBlock {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 21px;
+}
+
+#ratingContent {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+#starsContainer {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	width: 125px;
+	height: 20px;
+}
+
+#starsContainer svg {
+	width: 21px;
+	height: 20px;
+	fill: #ffcc00; 
+}
+
+#ratingBlock h3 {
+	width: 40px;
+	height: 36px;
+	margin: 0;
+	font-size: 26px;
+	line-height: 36.4px;
+	text-align: center;
+}
+
+#quantity {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 21px;
+	line-height: 31.5px;
+}
+
+#quantity #reviewCountSpan {
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 36.4px;
+}
+
+#openModal {
+	padding: 19px 40px 20px 40px;
+	border-radius: 50px;
+	font-family: 'Manrope', sans-serif;
+	font-size: 21px;
+	line-height: 31.5px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	background-color: #000;
+	white-space: nowrap;
+}
+
+#reviewsContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px 50px;
+}
+
+/* Блок reviews (блок с отзывами) */
+#reviews {
+	padding: 20px 49px;
+}
+
+.review {
+	width: calc(25% - 50px);
+	background-color: #f4f4f6;
+	border-radius: 15px;
+	padding: 30px 40px;
+	box-sizing: border-box;
+	margin-bottom: 35px;
+}
+
+.name-review {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.name-review h4 {
+	margin: 0;
+	font-size: 24px;
+	line-height: 33.8px;
+	letter-spacing: 1.5px;
+}
+
+.stars-review {
+	display: flex;
+	gap: 6px;
+	height: 20px;
+}
+
+.text-review {
+	font-size: 21px;
+	line-height: 31.5px;
+	margin-top: 20px;
+}
+
+.text-review p {
+	margin: 0;
+}
+
+.imgs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 24px;
+	margin-top: 35px;
+}
+
+.img-review img {
+	max-width: 200px;
+}
+
+/* Модальное окно */
+#modal {
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	overflow: auto;
+}
+
+/* Контент модального окна */
+#modalContent {
+	background-color: #fff;
+	width: 90%;
+	max-width: 627px;
+	margin: 8px auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+	transform: translateY(100%);
+	transition: transform 0.3s ease-in-out;
+}
+
+#modal.show #modalContent {
+	transform:translateY(0);
+}
+
+#modalContent h2 {
+	font-size: 50px;
+	line-height: 59.8px;
+	margin: 0;
+	font-weight: 500;
+	padding: 33px 0px 33px 50px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+/* Кнопка закрытия модального окна */
+#closeModal {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#closeModal svg {
+	width: 17.5px;
+	height: 17.5px;
+}
+
+#grade {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: fit-content;
+	margin-left: 50px;
+	margin-bottom: 30px;
+	max-width: 375px;
+	height: 56px;
+}
+
+#grade label {
+	font-size: 21px;
+	line-height: 31.5px;
+}
+
+#grade label span {
+	color: #ff0000;
+}
+
+#grade svg {
+	width: 21px;
+	height: 20px;
+	cursor: pointer;
+}
+
+#stars-grade {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	width: 161px;
+	height: 20px;
+	margin-left: 24px;
+}
+
+#stars-grade svg.filled {
+	fill: #ffcc00;
+}
+
+/* Формы */
+.inputGroup {
+	margin: 0 50px 25px 50px;
+}
+
+.inputGroup input {
+	padding: 19px 40px 20px 40px;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 50px;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 21px;
+	height: 65px;
+}
+
+.inputGroup label {
+	position: absolute;
+	left: 0;
+	margin-top: 19px;
+	margin-left: 90px;
+	pointer-events: none;
+	transition: all 0.3s ease;
+	font-size: 21px;
+	line-height: 31.5px;
+	height: 32px;
+}
+
+.inputGroup label span {
+	color: #ff0000;
+}
+
+.inputGroup :is(input:focus, input:valid) ~ label {
+	transform: translateY(-50%) scale(0.9);
+	margin: 0;
+	margin-left: 90px;
+	background-color: #fff;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+	border-color: #000;
+}
+
+#submitContainer {
+	display: flex;
+	justify-content: flex-end;
+	padding: 0px 50px 40px;
+}
+
+#submit {
+	font-family: 'Manrope', sans-serif;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	padding: 19px 40px 20px 40px;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size: 21px;
+	line-height: 31.5px;
+}
+
+.textareaGroup {
+	margin: 0 50px 10px 50px;
+}
+
+.textareaGroup textarea {
+	padding: 30px 40px 20px 40px;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 20px;
+	width: 100%;
+	height: 278px;
+	box-sizing: border-box;
+	font-size: 21px;
+	resize: none;
+}
+
+.textareaGroup label {
+	position: absolute;
+	left: 0;
+	padding-top: 19px;
+	margin-left: 90px;
+	pointer-events: none;
+	transition: all 0.3s ease;
+	font-size: 21px;
+	line-height: 31.5px;
+	height: 29px;
+}
+
+.textareaGroup label span {
+	color: #ff0000;
+}
+
+.textareaGroup textarea:focus ~ label, .textareaGroup textarea:not(:placeholder-shown) ~ label {
+	font-size: 21px;
+	color: #000;
+	background-color: #fff;
+	transform: translateY(-70%) scale(0.9);
+}
+
+.textareaGroup :is(textarea:focus, textarea:valid) {
+	border-color: #000;
+}
+
+#file-upload {
+	margin: 0 50px 33px 50px;
+}
+
+#file-upload label {
+	font-size: 21px;
+	line-height: 27.3px;
+	font-weight: 600;
+}
+
+#custum-file-upload {
+	height: 100px;
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: #f4f4f6;
+	padding: 32px;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+#custum-file-upload #icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#button-upload {
+	display: flex;
+	margin-top: 20px;
+}
+
+#button-upload span {
+	margin-left: 24px;
+	font-size: 21px;
+	line-height: 31.5px;
+}
+
+#custum-file-upload input {
+	display: none;
+}
+
+.error {
+	height: 25px;
+	color: #ff0000;
+	font-size: 18px;
+	line-height: 23.4px;
+}
+
+input.error, textarea.error {
+	border: 1px solid #ffb0b0;
+}
+
+#hintReviews {
+	width: 373px;
+	height: 83px;
+	border-radius: 10px;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1000;
+}
+
+#hintReviews p {
+	font-size: 21px;
+}
+
+@media (max-width: 1280px) {
+	.error {
+		font-size: 17px;
+		line-height: 22.1px;
+	}
+	
+	#submitContainer {
+		padding: 0px 40px 30px;
+	}
+	
+	#submit {
+		padding: 17px 40px 18px 40px;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	#button-upload span {
+		margin-left: 30px;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	#custum-file-upload {
+		height: 90px;
+		width: 90px;
+	}
+	
+	#file-upload label {
+		font-size: 20px;
+		line-height: 26px;
+	}
+	
+	.textareaGroup label {
+		margin-left: 75px;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	#file-upload {
+		margin: 10px 40px 65px 40px;
+	}
+	
+	.textareaGroup {
+		margin: 0 40px 5px 40px;
+	}
+	
+	.inputGroup {
+		margin: 0 40px 25px 40px;
+	}
+	
+	.inputGroup label {
+		margin-left: 75px;
+		font-size: 20px;
+		line-height: 30px;
+		height: 30px;
+	}
+	
+	.inputGroup :is(input:focus, input:valid) ~ label {
+		margin-left: 75px;
+	}
+	
+	#grade {
+		margin-left: 40px;
+		margin-bottom: 15px;
+	}
+	
+	#grade label {
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	#modalContent h2 {
+		font-size: 36px;
+		line-height: 46px;
+		padding: 30px 0px 30px 40px;
+		letter-spacing: 1px;
+	}
+	
+	#hintReviews {
+		width: 346px;
+		height: 70px;
+	}
+	
+	#hintReviews p {
+		font-size: 20px;
+	}
+	
+	#modalContent {
+		max-width: 520px;
+	}
+	
+	#titleBlock h2 {
+		margin: 20px 39px;
+		font-size: 33px;
+		font-weight: 500;
+		line-height: 46.8px;
+	}
+	
+	#reviewsContainer {
+		padding: 20px 39px;
+		display: flex;
+		align-items: flex-end;
+	}
+	
+	#ratingBlock {
+		font-size: 20px;
+		height: 34px;
+	}
+	
+	#ratingBlock h3 {
+		width: auto;
+		height: 34px;
+		font-size: 24px;
+		line-height: 33.6px;
+	}
+	
+	#quantity #reviewCountSpan {
+		font-size: 24px;
+		line-height: 33.6px;
+	}
+	
+	#reviewsCount {
+		font-size: 20px;
+		line-height: 30px;
+	}
+	
+	#openModal {
+		font-size: 20px;
+		padding: 17px 40px 18px 40px;
+		line-height: 30px;
+	}
+	
+	#reviews {
+		padding: 20px 39px;
+	}
+	
+	.review {
+		padding: 20px 30px 20px 30px;
+		margin-bottom: 30px;
+		width: calc(50% - 56px);
+	}
+	
+	.name-review h4 {
+		line-height: 31.2px;
+	}
+	
+	.stars-review svg {
+		width: 21px;
+		height: 20px;
+	}
+	
+	.text-review {
+		font-size: 20px;
+		line-height: 30px;
+		margin-top: 30px;
+	}
+	
+	.imgs {
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 767px) {
+	.error {
+		height: 16px;
+		font-size: 12px;
+		line-height: 15.6px;
+	}
+	
+	#submitContainer {
+		padding: 0px 30px 30px;
+	}
+	
+	#submit {
+		padding: 14px 40px 15px 40px;
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	#button-upload span {
+		margin-left: 20px;
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	#custum-file-upload {
+		height: 76px;
+		width: 76px;
+	}
+	
+	#file-upload label {
+		font-size: 14px;
+		line-height: 18.2px;
+	}
+	
+	.textareaGroup textarea {
+		padding: 30px 30px 20px 30px;
+		height: 178px;
+		font-size: 14px;
+	}
+	
+	.textareaGroup label {
+		padding-top: 12px;
+		margin-left: 55px;
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	.textareaGroup textarea:focus ~ label, .textareaGroup textarea:not(:placeholder-shown) ~ label {
+		font-size: 14px;
+		transform: translateY(-60%) scale(0.9);
+	}
+	
+	.inputGroup input {
+		height: 50px;
+		font-size: 14px;
+		padding: 19px 30px 20px 30px;
+	}
+	
+	.textareaGroup {
+		margin: 0 30px 5px 30px;
+	}
+	
+	.inputGroup {
+		margin: 0 30px 20px 30px;
+	}
+	
+	.inputGroup label {
+		margin-top: 12px;
+		margin-left: 55px;
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	.inputGroup :is(input:focus, input:valid) ~ label {
+		transform: translateY(-40%) scale(0.9);
+		margin: 0;
+		margin-left: 55px;
+		background-color: #fff;
+	}
+	
+	#grade {
+		margin-left: 30px;
+		margin-bottom: 10px;
+	}
+	
+	#grade label {
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	#grade svg {
+		width: 19px;
+		height: 18px;
+	}
+	
+	#stars-grade {
+		margin-left: 20px;
+	}
+	
+	#modalContent h2 {
+		font-size: 23px;
+		line-height: 29.9px;
+		padding: 30px 0px 15px 30px;
+	}
+	
+	#hintReviews {
+		width: 249px;
+		height: 53px;
+		border-radius: 6px;
+	}
+	
+	#hintReviews p {
+		font-size: 14px;
+	}
+	
+	#modalContent {
+		max-width: 360px;
+		border-radius: 0px;
+	}
+	
+	.review {
+		padding: 16px;
+		margin-bottom: 16px;
+		width: calc(100% - 31px);
+	}
+	
+	.stars-review svg {
+		width: 19px;
+		height: 18px;
+	}
+	
+	.stars-review {
+		display: flex;
+		gap: 5px;
+	}
+	
+	.name-review {
+		display: flex;
+		gap: 10px;
+	}
+	
+	#reviews {
+		padding: 10px 16px;
+	}
+	
+	#ratingBlock {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	#starsContainer {
+		display: flex;
+		gap: 5px;
+		width: 115px;
+	}
+	
+	#ratingContent {
+		display: flex;
+		gap: 8px;
+	}
+	
+	#openModal {
+		font-size: 14px;
+		padding: 14px 25px 15px;
+		line-height: 21px;
+	}
+	
+	#starsContainer svg {
+		width: 19px;
+		height: 18px;
+	}
+	
+	#ratingBlock h3 {
+		height: 24px;
+		font-size: 17px;
+		line-height: 23.8px;
+	}
+	
+	#reviewsContainer {
+		padding: 10px 16px;
+		display: flex;
+		align-items: flex-start;
+	}
+	
+	#reviewsCount {
+		font-size: 14px;
+		line-height: 21px;
+	}
+	
+	#quantity #reviewCountSpan {
+		font-size: 17px;
+		line-height: 23.8px;
+	}
+	
+	#quantity {
+		margin-top: 25px;
+		display: flex;
+		gap: 10px;
+	}
+	
+	.text-review {
+		font-size: 14px;
+		line-height: 21px;
+		margin-top: 20px;
+	}
+	
+	.name-review h4 {
+		font-size: 17px;
+		line-height: 22.1px;
+	}
+	
+	#titleBlock h2 {
+		margin: 20px 16px;
+		font-size: 23px;
+		line-height: 29.9px;
+		letter-spacing: 2px;
+	}
+}
