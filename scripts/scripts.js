@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		averageRatingElement.textContent = updatedAverage.toFixed(1).replace('.', ',');
 		
 		// Округляем среднюю оценку
-		const fullStars = Math.floor(updatedAverage);
+		const fullStars = Math.round(updatedAverage);
 		const emptyStars = 5 - fullStars;
 		
 		const stars = document.querySelectorAll('#starsContainer svg');
