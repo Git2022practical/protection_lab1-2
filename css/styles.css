@@ -138,6 +138,7 @@ body {
 
 .text-review p {
 	margin: 0;
+	white-space: pre-wrap;
 }
 
 .imgs {
