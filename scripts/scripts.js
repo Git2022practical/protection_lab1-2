@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		ratingBlock.setAttribute('data-reviews', currentReviews + 1);
 		
 		reviewCountSpan.textContent = currentReviews + 1;
-		averageRatingElement.textContent = updatedAverage.toFixed(1);
+		averageRatingElement.textContent = updatedAverage.toFixed(1).replace('.', ',');
 		
 		// Округляем среднюю оценку
 		const fullStars = Math.floor(updatedAverage);
