@@ -339,7 +339,7 @@ body {
 	color: #ff0000;
 }
 
-.textareaGroup textarea:focus ~ label, .textareaGroup textarea:not(:placeholder-shown) ~ label {
+.textareaGroup :is(textarea:focus, textarea:valid) ~ label {
 	font-size: 21px;
 	color: #000;
 	background-color: #fff;
@@ -352,6 +352,7 @@ body {
 
 #file-upload {
 	margin: 0 50px 33px 50px;
+	overflow: auto;
 }
 
 #file-upload label {
@@ -632,7 +633,7 @@ input.error, textarea.error {
 		line-height: 21px;
 	}
 	
-	.textareaGroup textarea:focus ~ label, .textareaGroup textarea:not(:placeholder-shown) ~ label {
+	.textareaGroup :is(textarea:focus, textarea:valid) ~ label {
 		font-size: 14px;
 		transform: translateY(-60%) scale(0.9);
 	}
