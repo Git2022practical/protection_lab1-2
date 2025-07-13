@@ -352,7 +352,6 @@ body {
 
 #file-upload {
 	margin: 0 50px 33px 50px;
-	overflow: auto;
 }
 
 #file-upload label {
