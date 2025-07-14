@@ -181,11 +181,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (imagePaths.length > 0) {
 			const imagesContainer = document.createElement('div');
 			imagesContainer.classList.add('imgs');
+			
+			i = 1;
+			
 			imagePaths.forEach(path => {
 				const imgWrapper = document.createElement('div');
 				imgWrapper.classList.add('img-review');
-				imgWrapper.innerHTML = `<img src="${path}" alt="Фото">`;
+				imgWrapper.innerHTML = `<img src="${path}" alt="` + i + `-е фото с отзывом">`;
 				imagesContainer.appendChild(imgWrapper);
+				
+				i++;
 			});
 			review.appendChild(imagesContainer);
 		}
